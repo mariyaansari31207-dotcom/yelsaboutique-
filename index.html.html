@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elysian Attire | Modern Clothing Brand</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #fff; color: #1a1a1a; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    .announcement { background: #000; color: #f5f5f5; text-align: center; padding: 10px; font-size: 0.85rem; }
+    header { background: white; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #eee; }
+    .navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; flex-wrap: wrap; }
+    .logo h1 { font-size: 1.8rem; font-weight: 700; background: linear-gradient(135deg, #1e1e1e, #3a3a3a); background-clip: text; -webkit-background-clip: text; color: transparent; }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a { text-decoration: none; font-weight: 500; color: #1e1e1e; transition: color 0.2s; }
+    .nav-links a:hover { color: #a17c4b; }
+    .cart-icon { position: relative; cursor: pointer; font-size: 1.3rem; }
+    .cart-count { position: absolute; top: -8px; right: -12px; background: #a17c4b; color: white; font-size: 0.7rem; border-radius: 50%; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; }
+    .hamburger { display: none; font-size: 1.6rem; cursor: pointer; background: none; border: none; }
+    .hero { background: linear-gradient(120deg, #faf9f7 0%, #f0ede8 100%); padding: 60px 0 80px; }
+    .hero-grid { display: flex; align-items: center; gap: 3rem; flex-wrap: wrap; }
+    .hero-content { flex: 1; }
+    .hero-content h1 { font-size: 3.5rem; font-weight: 700; line-height: 1.2; margin-bottom: 1.2rem; }
+    .hero-content p { font-size: 1.1rem; color: #4a4a4a; margin-bottom: 2rem; }
+    .btn-primary { background: #1a1a1a; color: white; border: none; padding: 14px 32px; font-weight: 600; border-radius: 40px; cursor: pointer; transition: 0.2s; display: inline-block; text-decoration: none; }
+    .btn-primary:hover { background: #a17c4b; transform: translateY(-2px); }
+    .hero-image { flex: 1; border-radius: 28px; overflow: hidden; box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1); }
+    .hero-image img { width: 100%; height: auto; display: block; }
+    .features { padding: 60px 0; background: white; border-bottom: 1px solid #f0f0f0; }
+    .feature-grid { display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+    .feature-card { text-align: center; flex: 1; min-width: 160px; }
+    .feature-card i { font-size: 2rem; color: #a17c4b; margin-bottom: 1rem; }
+    .products-section { padding: 80px 0; }
+    .section-title { text-align: center; font-size: 2.2rem; font-weight: 600; }
+    .section-subtitle { text-align: center; color: #6b6b6b; margin-bottom: 48px; }
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 2rem; }
+    .product-card { background: #fff; border-radius: 24px; overflow: hidden; transition: all 0.3s; border: 1px solid #f3f3f3; }
+    .product-card:hover { transform: translateY(-6px); box-shadow: 0 20px 25px -12px rgba(0,0,0,0.1); }
+    .product-img { width: 100%; aspect-ratio: 4/5; object-fit: cover; }
+    .product-info { padding: 20px 16px 24px; }
+    .product-title { font-weight: 600; font-size: 1.1rem; margin-bottom: 6px; }
+    .product-price { font-weight: 700; color: #a17c4b; margin: 8px 0 14px; }
+    .add-to-cart { background: #f5f5f5; border: none; width: 100%; padding: 12px; font-weight: 600; border-radius: 40px; cursor: pointer; }
+    .add-to-cart:hover { background: #1a1a1a; color: white; }
+    .about-section { background: #faf8f5; padding: 80px 0; }
+    .about-grid { display: flex; gap: 3rem; align-items: center; flex-wrap: wrap; }
+    .about-img { flex: 1; border-radius: 28px; overflow: hidden; }
+    .about-img img { width: 100%; }
+    .about-content { flex: 1; }
+    .newsletter { background: #1e1e1e; color: white; padding: 70px 0; text-align: center; }
+    .news-form { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; max-width: 500px; margin: 0 auto; }
+    .news-form input { flex: 1; padding: 14px 20px; border-radius: 60px; border: none; outline: none; }
+    .news-form button { background: #a17c4b; border: none; padding: 0 28px; border-radius: 60px; font-weight: 600; color: white; cursor: pointer; }
+    footer { background: #0c0c0c; color: #bcbcbc; padding: 48px 0 24px; }
+    .footer-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 2rem; margin-bottom: 2rem; }
+    .copyright { text-align: center; padding-top: 30px; border-top: 1px solid #2a2a2a; font-size: 0.8rem; }
+    @media (max-width: 768px) {
+      .hamburger { display: block; }
+      .nav-links { position: absolute; top: 85px; left: 0; background: white; width: 100%; flex-direction: column; padding: 24px 0; transform: translateY(-120%); opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 999; }
+      .nav-links.active { transform: translateY(0); opacity: 1; visibility: visible; }
+      .hero-content h1 { font-size: 2.2rem; }
+    }
+    .cart-modal { display: none; position: fixed; top: 0; right: 0; width: 400px; max-width: 90%; height: 100%; background: white; box-shadow: -2px 0 20px rgba(0,0,0,0.1); z-index: 2000; padding: 24px; overflow-y: auto; }
+    .cart-modal.open { display: block; }
+    .cart-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1999; }
+    .cart-overlay.open { display: block; }
+    .cart-item { display: flex; gap: 12px; margin-bottom: 16px; align-items: center; border-bottom: 1px solid #eee; padding-bottom: 12px; }
+    .cart-item img { width: 60px; height: 80px; object-fit: cover; border-radius: 8px; }
+    .close-cart { float: right; font-size: 24px; cursor: pointer; }
+  </style>
+</head>
+<body>
+<div class="announcement"><i class="fas fa-truck"></i> FREE SHIPPING ON ORDERS OVER $50 • WORLDWIDE DELIVERY</div>
+<header>
+  <div class="container">
+    <div class="navbar">
+      <div class="logo"><h1>ELYSIAN<span>ATTIRE</span></h1></div>
+      <button class="hamburger" id="hamburgerBtn"><i class="fas fa-bars"></i></button>
+      <div class="nav-links" id="navLinks">
+        <a href="#">Home</a><a href="#">Shop</a><a href="#">New Arrivals</a><a href="#">About</a><a href="#">Contact</a>
+        <div class="cart-icon" id="cartIcon"><i class="fas fa-shopping-bag"></i><span class="cart-count" id="cartCount">0</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+<main>
+  <section class="hero"><div class="container hero-grid"><div class="hero-content"><span class="badge">SUMMER '25 CAPSULE</span><h1>Effortless style,<br>uncompromising quality.</h1><p>Minimalist essentials designed for the modern wardrobe.</p><button class="btn-primary" id="shopNowBtn">Shop Collection →</button></div><div class="hero-image"><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&auto=format" alt="Modern fashion"></div></div></section>
+  <section class="features"><div class="container feature-grid"><div class="feature-card"><i class="fas fa-leaf"></i><h4>Eco-Conscious</h4><p>100% organic materials</p></div><div class="feature-card"><i class="fas fa-globe-americas"></i><h4>Global Shipping</h4><p>Free returns</p></div><div class="feature-card"><i class="fas fa-hand-sparkles"></i><h4>Premium Craft</h4><p>Ethically made</p></div><div class="feature-card"><i class="fas fa-credit-card"></i><h4>Secure Payment</h4></div></div></section>
+  <section class="products-section"><div class="container"><h2 class="section-title">Editor's Picks</h2><p class="section-subtitle">Fresh drops — limited quantities</p><div class="product-grid" id="productGrid">Loading...</div></div></section>
+  <section class="about-section"><div class="container about-grid"><div class="about-img"><img src="https://images.unsplash.com/photo-1483985988355-9637284fa89c?w=700&auto=format" alt="Atelier"></div><div class="about-content"><h2>Rooted in authenticity</h2><p>ELYSIAN ATTIRE blends urban edge with quiet luxury. Each piece is designed in-house using premium fabrics.</p><button class="btn-primary" style="background:#a17c4b;">Discover our story</button></div></div></section>
+  <section class="newsletter"><div class="container"><h3>Join the inner circle</h3><p>Be first to know about exclusive drops.</p><div class="news-form"><input type="email" id="newsEmail" placeholder="Your email address"><button id="newsBtn">Subscribe</button></div></div></section>
+</main>
+<footer><div class="container"><div class="footer-grid"><div class="footer-col"><h4>ELYSIAN ATTIRE</h4><p>Where minimalism meets soulful design.</p><div class="social-icons"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div></div><div class="footer-col"><h4>Explore</h4><p><a href="#">New Arrivals</a></p><p><a href="#">Sustainability</a></p></div><div class="footer-col"><h4>Support</h4><p><a href="#">FAQs</a></p><p><a href="#">Contact</a></p></div></div><div class="copyright">© 2025 ELYSIAN ATTIRE — All rights reserved.</div></div></footer>
+
+<!-- Cart Modal -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<div class="cart-modal" id="cartModal">
+  <span class="close-cart" id="closeCart">&times;</span>
+  <h3>Your Bag</h3>
+  <div id="cartItemsContainer">Cart is empty</div>
+  <div id="cartTotal" style="margin-top: 16px; font-weight: bold;"></div>
+  <button id="checkoutBtn" class="btn-primary" style="margin-top: 20px; width:100%;">Proceed to Checkout</button>
+</div>
+
+<script>
+  let cartCount = 0;
+  let currentCart = { items: [] };
+
+  async function fetchProducts() {
+    try {
+      const res = await fetch('/api/products');
+      const products = await res.json();
+      renderProducts(products);
+    } catch (err) { console.error(err); document.getElementById('productGrid').innerHTML = 'Failed to load products'; }
+  }
+
+  function renderProducts(products) {
+    const grid = document.getElementById('productGrid');
+    if (!products.length) { grid.innerHTML = '<p>No products yet</p>'; return; }
+    grid.innerHTML = products.map(p => `
+      <div class="product-card">
+        <img class="product-img" src="${p.image}" alt="${p.alt || p.name}" loading="lazy">
+        <div class="product-info">
+          <div class="product-title">${p.name}</div>
+          <div class="product-price">$${p.price.toFixed(2)}</div>
+          <button class="add-to-cart" data-id="${p._id}" data-name="${p.name}" data-price="${p.price}">Add to Cart</button>
+        </div>
+      </div>
+    `).join('');
+    document.querySelectorAll('.add-to-cart').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const id = btn.dataset.id;
+        addToCart(id);
+      });
+    });
+  }
+
+  async function addToCart(productId) {
+    try {
+      const res = await fetch('/api/cart/add', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ productId, quantity: 1 }),
+        credentials: 'include'
+      });
+      if (res.ok) {
+        await fetchCart();
+        alert('Item added to cart');
+      } else { alert('Failed to add'); }
+    } catch (err) { console.error(err); }
+  }
+
+  async function fetchCart() {
+    try {
+      const res = await fetch('/api/cart', { credentials: 'include' });
+      const cart = await res.json();
+      currentCart = cart;
+      const itemCount = cart.items?.reduce((sum, i) => sum + i.quantity, 0) || 0;
+      cartCount = itemCount;
+      document.getElementById('cartCount').innerText = cartCount;
+      renderCartModal();
+    } catch (err) { console.error(err); }
+  }
+
+  function renderCartModal() {
+    const container = document.getElementById('cartItemsContainer');
+    if (!currentCart.items || currentCart.items.length === 0) {
+      container.innerHTML = 'Your bag is empty.';
+      document.getElementById('cartTotal').innerHTML = '';
+      return;
+    }
+    let total = 0;
+    container.innerHTML = currentCart.items.map(item => {
+      total += item.price * item.quantity;
+      return `
+        <div class="cart-item">
+          <img src="${item.image}" alt="${item.name}">
+          <div><strong>${item.name}</strong><br>$${item.price} x ${item.quantity}</div>
+          <button class="remove-item" data-id="${item.productId}" style="margin-left:auto; background:none; border:none; cursor:pointer;">🗑️</button>
+        </div>
+      `;
+    }).join('');
+    document.getElementById('cartTotal').innerHTML = `Total: $${total.toFixed(2)}`;
+    document.querySelectorAll('.remove-item').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const productId = btn.dataset.id;
+        await fetch(`/api/cart/remove/${productId}`, { method: 'DELETE', credentials: 'include' });
+        await fetchCart();
+      });
+    });
+  }
+
+  // Cart modal UI
+  const cartModal = document.getElementById('cartModal');
+  const cartOverlay = document.getElementById('cartOverlay');
+  document.getElementById('cartIcon').addEventListener('click', () => { cartModal.classList.add('open'); cartOverlay.classList.add('open'); fetchCart(); });
+  document.getElementById('closeCart').addEventListener('click', () => { cartModal.classList.remove('open'); cartOverlay.classList.remove('open'); });
+  cartOverlay.addEventListener('click', () => { cartModal.classList.remove('open'); cartOverlay.classList.remove('open'); });
+
+  // Checkout (simple order simulation)
+  document.getElementById('checkoutBtn').addEventListener('click', async () => {
+    const email = prompt('Enter your email for order confirmation:');
+    if (!email) return;
+    const address = prompt('Shipping address (full address):');
+    if (!address) return;
+    try {
+      const res = await fetch('/api/orders', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ customerEmail: email, shippingAddress: { fullName: 'Guest', address, city: 'N/A', postalCode: '00000', country: 'US' } })
+      });
+      if (res.ok) {
+        alert('Order placed successfully! Thank you.');
+        cartModal.classList.remove('open');
+        cartOverlay.classList.remove('open');
+        await fetchCart();
+      } else { alert('Order failed'); }
+    } catch (err) { alert('Error'); }
+  });
+
+  // Newsletter
+  document.getElementById('newsBtn').addEventListener('click', async () => {
+    const email = document.getElementById('newsEmail').value;
+    if (!email.includes('@')) { alert('Valid email required'); return; }
+    const res = await fetch('/api/newsletter/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email }) });
+    if (res.ok) alert('Subscribed!'); else alert('Already subscribed or error');
+    document.getElementById('newsEmail').value = '';
+  });
+
+  // Mobile menu
+  const hamburger = document.getElementById('hamburgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => { navLinks.classList.toggle('active'); });
+  document.getElementById('shopNowBtn').addEventListener('click', () => { document.querySelector('.products-section').scrollIntoView({ behavior: 'smooth' }); });
+
+  fetchProducts();
+  fetchCart();
+</script>
+</body>
+</html>
